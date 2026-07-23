@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>1박 2일 여름 피서 여행 스케줄</title>
+<style>
+  :root{
+    --bg:#f3f7f6;
+    --bg-soft:#e9f1ef;
+    --ink:#1e2b29;
+    --ink-soft:#5b6b68;
+    --line:#d7e3e0;
+    --card-bg:#ffffff;
+    --accent:#1f7a72;
+    --accent-soft:#e3f2ef;
+    --accent2:#3d7ea6;
+    --accent2-soft:#e6f0f6;
+    --warn:#b3651a;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#101817;
+      --bg-soft:#16211f;
+      --ink:#e8f0ee;
+      --ink-soft:#9db3af;
+      --line:#2a3735;
+      --card-bg:#182322;
+      --accent:#5fc9bd;
+      --accent-soft:#1b302c;
+      --accent2:#7db8dd;
+      --accent2-soft:#182731;
+      --warn:#e0a75e;
+    }
+  }
+
+  *{ box-sizing:border-box; }
+
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Pretendard","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.6;
+  }
+
+  .wrap{
+    max-width:760px;
+    margin:0 auto;
+    padding:48px 24px 80px;
+  }
+
+  header.hero{
+    margin-bottom:36px;
+  }
+  .eyebrow{
+    font-size:12.5px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--accent);
+    font-weight:700;
+    margin-bottom:10px;
+  }
+  h1{
+    font-size:clamp(26px,4.5vw,36px);
+    line-height:1.25;
+    margin:0 0 12px;
+    text-wrap:balance;
+    letter-spacing:-0.01em;
+  }
+  .sub{
+    color:var(--ink-soft);
+    font-size:15.5px;
+    max-width:60ch;
+  }
+
+  section{ margin-bottom:40px; }
+  h2{
+    font-size:19px;
+    margin:0 0 16px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  h2 .tag{
+    font-size:11px;
+    background:var(--accent-soft);
+    color:var(--accent);
+    padding:3px 8px;
+    border-radius:20px;
+    font-weight:700;
+    letter-spacing:0.02em;
+  }
+
+  .rec-card{
+    background:var(--card-bg);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:22px 24px;
+    box-shadow:0 1px 2px rgba(0,0,0,.04);
+  }
+  .rec-card p{ margin:0 0 10px; font-size:14.5px; }
+  .rec-card p:last-child{ margin-bottom:0; }
+  .rec-card b{ color:var(--accent); }
+
+  table.compare{
+    width:100%;
+    border-collapse:collapse;
+    font-size:13.5px;
+    background:var(--card-bg);
+    border:1px solid var(--line);
+    border-radius:14px;
+    overflow:hidden;
+  }
+  table.compare th, table.compare td{
+    padding:12px 14px;
+    text-align:left;
+    border-bottom:1px solid var(--line);
+  }
+  table.compare th{
+    background:var(--bg-soft);
+    font-size:12px;
+    letter-spacing:0.03em;
+    color:var(--ink-soft);
+    font-weight:700;
+  }
+  table.compare tr:last-child td{ border-bottom:none; }
+  table.compare td.win{ color:var(--accent); font-weight:700; }
+  .scroll-x{ overflow-x:auto; }
+
+  .day-head{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    gap:12px;
+    margin-bottom:18px;
+  }
+  .day-head .d-title{ font-size:19px; font-weight:700; margin:0; }
+  .day-head .d-date{ font-size:13px; color:var(--ink-soft); }
+
+  .timeline{
+    position:relative;
+    padding-left:26px;
+    border-left:2px solid var(--line);
+  }
+  .stop{
+    position:relative;
+    padding-bottom:26px;
+  }
+  .stop:last-child{ padding-bottom:0; }
+  .stop::before{
+    content:"";
+    position:absolute;
+    left:-31px;
+    top:4px;
+    width:9px;
+    height:9px;
+    border-radius:50%;
+    background:var(--accent);
+    border:2px solid var(--card-bg);
+    box-shadow:0 0 0 2px var(--accent);
+  }
+  .stop.day2::before{ background:var(--accent2); box-shadow:0 0 0 2px var(--accent2); }
+  .stop .time{
+    font-size:12.5px;
+    font-weight:700;
+    color:var(--accent);
+    font-variant-numeric: tabular-nums;
+    letter-spacing:0.02em;
+  }
+  .stop.day2 .time{ color:var(--accent2); }
+  .stop .place{
+    font-size:16px;
+    font-weight:700;
+    margin:3px 0 4px;
+  }
+  .stop .desc{
+    font-size:13.5px;
+    color:var(--ink-soft);
+  }
+  .stop .chip{
+    display:inline-block;
+    font-size:11px;
+    background:var(--accent-soft);
+    color:var(--accent);
+    padding:2px 8px;
+    border-radius:20px;
+    margin-top:6px;
+    font-weight:600;
+  }
+  .stop.day2 .chip{ background:var(--accent2-soft); color:var(--accent2); }
+
+  .tips{
+    background:var(--bg-soft);
+    border-radius:14px;
+    padding:20px 24px;
+    font-size:13.5px;
+  }
+  .tips ul{ margin:8px 0 0; padding-left:18px; }
+  .tips li{ margin-bottom:6px; }
+  .tips strong{ color:var(--warn); }
+
+  footer{
+    text-align:center;
+    font-size:12px;
+    color:var(--ink-soft);
+    margin-top:60px;
+  }
+
+  @media (max-width:520px){
+    .wrap{ padding:32px 16px 60px; }
+    table.compare{ font-size:12.5px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <div class="eyebrow">1박 2일 · 태백 · 정선 · 평창 고원 드라이브</div>
+    <h1>구름 위 고원과 서늘한 동굴, 강원 고원 드라이브 1박 2일</h1>
+    <p class="sub">평창 육백마지기와 정선 만항재의 고원 드라이브, 태백 용연동굴의 서늘한 동굴 탐험까지 — 한여름에도 시원하고 여유롭게 즐기는 자가운전 코스입니다.</p>
+  </header>
+
+  <section>
+    <h2>왜 강원도인가요? <span class="tag">추천 이유</span></h2>
+    <div class="rec-card">
+      <p><b>고원이라 원래 시원합니다.</b> 육백마지기(약 1,180m)와 만항재(약 1,330m, 국내 포장도로 중 최고 지점)는 해발고도가 높아 한여름에도 서늘한 바람이 붑니다. 에어컨 없이도 체감 온도가 확 낮아지는 코스예요.</p>
+      <p><b>용연동굴은 사실상 '진짜 시원함'입니다.</b> 동굴 내부는 연중 10도 안팎으로 유지돼서, 한여름 무더위를 피하기엔 이만한 곳이 없어요. 얇은 겉옷 하나만 챙기면 완벽합니다.</p>
+      <p><b>드라이브 자체가 여행입니다.</b> 풍력발전기가 늘어선 능선길과 야생화가 핀 하늘숲길을 차로 오르내리는 것만으로도 이번 여행의 하이라이트가 돼요. 걷는 구간이 짧아 체력 부담도 적습니다.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>간단 비교</h2>
+    <div class="scroll-x">
+      <table class="compare">
+        <tr><th>항목</th><th>강원도(고원 드라이브)</th><th>제주도</th></tr>
+        <tr><td>서울 기준 이동</td><td class="win">자가운전 약 2.5~3시간</td><td>공항 이동+비행 약 4~5시간</td></tr>
+        <tr><td>여름 체감</td><td class="win">고원+동굴로 확실히 서늘함</td><td>고온다습, 한낮 더위 강함</td></tr>
+        <tr><td>1박 2일 적합도</td><td class="win">이동 부담 적어 여유로움</td><td>이동시간 대비 체류 짧음</td></tr>
+        <tr><td>비용</td><td class="win">상대적으로 저렴</td><td>항공+렌터카로 비용 높음</td></tr>
+        <tr><td>이런 분께 추천</td><td>드라이브·자연 경관 위주</td><td>휴양 위주로 2박 이상 여유될 때</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <div class="day-head">
+      <p class="d-title">Day 1 · 평창 → 정선</p>
+      <p class="d-date">서울 → 육백마지기 → 만항재</p>
+    </div>
+    <div class="timeline">
+      <div class="stop">
+        <div class="time">07:30</div>
+        <div class="place">서울 출발 (자가운전)</div>
+        <div class="desc">영동고속도로를 타고 평창 방향으로 출발합니다. 산길 진입 전 주유는 미리 해두세요.</div>
+      </div>
+      <div class="stop">
+        <div class="time">10:00</div>
+        <div class="place">평창 육백마지기</div>
+        <div class="desc">해발 약 1,180m 고원 능선. 하얀 풍력발전기가 늘어선 길을 따라 드라이브하며 탁 트인 전망을 즐깁니다. 표고가 높아 한여름에도 바람이 서늘해요.</div>
+        <div class="chip">고원 · 서늘함</div>
+      </div>
+      <div class="stop">
+        <div class="time">12:00</div>
+        <div class="place">점심 · 평창 곤드레밥</div>
+        <div class="desc">고랭지 나물인 곤드레밥으로 든든하게 챙깁니다.</div>
+      </div>
+      <div class="stop">
+        <div class="time">13:30</div>
+        <div class="place">정선 만항재로 이동</div>
+        <div class="desc">굽이진 산길 드라이브로 약 1시간 이동. 커브가 많으니 여유 있게 저속으로 운전하세요.</div>
+      </div>
+      <div class="stop">
+        <div class="time">15:00</div>
+        <div class="place">정선 만항재 · 하늘숲길</div>
+        <div class="desc">해발 약 1,330m, 국내에서 차로 오를 수 있는 가장 높은 고갯길. 야생화가 핀 하늘숲길을 가볍게 산책합니다. 한여름에도 긴팔이 필요할 만큼 서늘해요.</div>
+        <div class="chip">가장 시원한 코스</div>
+      </div>
+      <div class="stop">
+        <div class="time">17:00</div>
+        <div class="place">숙소 체크인 · 정선 또는 태백</div>
+        <div class="desc">다음 날 용연동굴 이동을 고려해 태백 인근 숙소로 잡으면 동선이 짧아집니다.</div>
+      </div>
+      <div class="stop">
+        <div class="time">18:30</div>
+        <div class="place">저녁 · 정선 콧등치기국수</div>
+        <div class="desc">쫄깃한 메밀 면발의 향토 음식으로 하루를 마무리합니다.</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="day-head">
+      <p class="d-title">Day 2 · 태백 → 서울</p>
+      <p class="d-date">용연동굴 · 복귀일</p>
+    </div>
+    <div class="timeline">
+      <div class="stop day2">
+        <div class="time">09:00</div>
+        <div class="place">숙소 조식 · 태백 방향 출발</div>
+        <div class="desc">체크아웃 후 용연동굴 방향으로 이동합니다.</div>
+      </div>
+      <div class="stop day2">
+        <div class="time">10:00</div>
+        <div class="place">태백 용연동굴</div>
+        <div class="desc">해발 920m 지점에 위치한 국내 최고지대 석회동굴. 내부는 연중 10도 안팎으로 유지돼 한여름에도 한기가 느껴질 정도로 시원합니다. 종유석·석순을 구경하며 동굴 탐험을 즐기세요.</div>
+        <div class="chip">연중 10도 · 진짜 시원함</div>
+      </div>
+      <div class="stop day2">
+        <div class="time">12:00</div>
+        <div class="place">점심 · 태백 물닭갈비</div>
+        <div class="desc">얼큰하고 시원한 국물의 태백 향토 음식으로 마무리 식사를 합니다.</div>
+      </div>
+      <div class="stop day2">
+        <div class="time">13:30</div>
+        <div class="place">서울로 출발</div>
+        <div class="desc">중앙고속도로·영동고속도로를 경유해 서울 방향으로 출발합니다.</div>
+      </div>
+      <div class="stop day2">
+        <div class="time">16:30</div>
+        <div class="place">서울 도착</div>
+        <div class="desc">약 3시간 후 서울 도착. 저녁 전에 여유롭게 귀가합니다.</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>준비 팁</h2>
+    <div class="tips">
+      <p><strong>동굴 대비:</strong> 용연동굴 내부는 한여름에도 10도 안팎이라 얇은 겉옷이나 긴팔을 꼭 챙기세요.</p>
+      <ul>
+        <li>육백마지기·만항재 구간은 급커브와 고지대 안개가 잦으니 저속 운전하고, 멀미가 있다면 미리 약을 챙기세요.</li>
+        <li>산간 지역은 주유소가 드무니 평창·정선 진입 전에 미리 주유해두는 게 안전합니다.</li>
+        <li>고지대는 자외선이 강하니 자외선 차단제와 모자를 챙기세요.</li>
+        <li>여름 성수기에는 숙소가 빨리 마감되니 미리 예약하는 것을 추천해요.</li>
+        <li>내비게이션에 육백마지기·만항재는 비포장·좁은 구간이 일부 있으니 실시간 도로 상태를 확인하세요.</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>제주도는 2박 이상 여유 있는 일정일 때 다시 고려해보세요. (본 코스는 자가운전 기준입니다)</footer>
+
+</div>
+</body>
+</html>

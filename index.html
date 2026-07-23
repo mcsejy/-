@@ -215,16 +215,23 @@
   }
   .stop.day2 .chip{ background:var(--accent2-soft); color:var(--accent2); }
   .info-link{
-    display:inline-block;
-    margin-left:4px;
-    font-size:13px;
+    display:inline-flex;
+    align-items:center;
+    gap:4px;
+    margin-left:8px;
+    font-size:11px;
     font-weight:700;
+    letter-spacing:0.01em;
     color:var(--accent);
+    background:var(--accent-soft);
+    border:1px solid rgba(70,232,208,.4);
+    padding:3px 10px;
+    border-radius:20px;
     text-decoration:none;
     vertical-align:middle;
     cursor:pointer;
   }
-  .info-link:hover{ text-shadow:0 0 10px rgba(70,232,208,.6); }
+  .info-link:hover{ background:rgba(70,232,208,.24); box-shadow:0 0 10px rgba(70,232,208,.45); }
   .info-link:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
 
   .tips{
@@ -310,7 +317,7 @@
       </div>
       <div class="stop">
         <div class="time">10:00</div>
-        <div class="place">평창 육백마지기 <a class="info-link" href="https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=3bcb7c67-06b0-4fc5-a53d-95194981e091" onclick="return openInfoPopup(this.href)" rel="noopener" title="한국관광공사 여행지 정보 (새 창)">↗</a></div>
+        <div class="place">평창 육백마지기 <a class="info-link" href="https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=3bcb7c67-06b0-4fc5-a53d-95194981e091" onclick="return openInfoPopup(this.href)" rel="noopener" title="한국관광공사 여행지 정보 (새 창)">🔗 정보 보기</a></div>
         <div class="desc">해발 약 1,180m 고원 능선. 하얀 풍력발전기가 늘어선 길을 따라 드라이브하며 탁 트인 전망을 즐깁니다. 표고가 높아 한여름에도 바람이 서늘해요.</div>
         <div class="chip">고원 · 서늘함</div>
       </div>

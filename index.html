@@ -151,18 +151,14 @@
   }
   .stop:last-child{ padding-bottom:0; }
   .stop::before{
-    content:"";
+    content:"🕐";
     position:absolute;
-    left:-31px;
-    top:4px;
-    width:9px;
-    height:9px;
-    border-radius:50%;
-    background:var(--accent);
-    border:2px solid var(--bg);
-    box-shadow:0 0 10px 2px rgba(70,232,208,.7);
+    left:-33px;
+    top:-2px;
+    font-size:20px;
+    line-height:1;
   }
-  .stop.day2::before{ background:var(--accent2); box-shadow:0 0 10px 2px rgba(232,183,104,.6); }
+  .stop.day2::before{ content:"🕑"; }
   .stop .time{
     font-size:12.5px;
     font-weight:700;

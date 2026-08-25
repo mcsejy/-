@@ -1,0 +1,268 @@
+
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>전주 · 1박 2일 여행 스케줄</title>
+<meta name="description" content="전주 1박 2일 여행 스케줄">
+<meta property="og:type" content="website">
+<meta property="og:title" content="전주 · 1박 2일 여행 스케줄">
+<meta property="og:description" content="전주 1박 2일 여행 스케줄">
+<meta property="og:url" content="https://mcsejy.github.io/-/">
+<meta property="og:image" content="https://mcsejy.github.io/-/전주.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://mcsejy.github.io/-/전주.jpg">
+<style>
+  :root{
+    --bg:#fafbfc;
+    --bg-soft:#f0f3f7;
+    --ink:#1a2332;
+    --ink-soft:#5a6b7a;
+    --line:rgba(52,108,200,0.1);
+    --card-bg:rgba(255,255,255,0.6);
+    --accent:#2563eb;
+    --accent-soft:rgba(37,99,235,0.1);
+    --accent2:#10b981;
+    --accent2-soft:rgba(16,185,129,0.1);
+    --warn:#f97316;
+  }
+
+  *{ box-sizing:border-box; }
+
+  html{ background:var(--bg); }
+
+  body{
+    margin:0;
+    background:
+      radial-gradient(1.5px 1.5px at 8% 12%, rgba(37,99,235,.15), transparent),
+      radial-gradient(1.5px 1.5px at 22% 28%, rgba(16,185,129,.12), transparent),
+      radial-gradient(1px 1px at 38% 8%, rgba(59,130,246,.1), transparent),
+      radial-gradient(1.5px 1.5px at 55% 22%, rgba(34,197,94,.1), transparent),
+      radial-gradient(1px 1px at 70% 6%, rgba(37,99,235,.12), transparent),
+      radial-gradient(1.5px 1.5px at 85% 18%, rgba(16,185,129,.1), transparent),
+      radial-gradient(1px 1px at 15% 45%, rgba(59,130,246,.08), transparent),
+      radial-gradient(1.5px 1.5px at 92% 40%, rgba(34,197,94,.08), transparent),
+      radial-gradient(1px 1px at 60% 55%, rgba(37,99,235,.06), transparent),
+      radial-gradient(1.5px 1.5px at 30% 65%, rgba(16,185,129,.06), transparent),
+      linear-gradient(135deg, rgba(37,99,235,0.08) 0%, rgba(16,185,129,0.05) 100%),
+      var(--bg);
+    background-repeat:no-repeat;
+    background-size:100% 900px;
+    color:var(--ink);
+    font-family:"Pretendard","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.6;
+  }
+
+  .hero{
+    position:relative;
+    height:min(56vh, 480px);
+    min-height:320px;
+    background-image:
+      linear-gradient(to bottom, rgba(5,11,22,0.15) 0%, rgba(5,11,22,0.35) 55%, var(--bg) 100%),
+      url("https://mcsejy.github.io/-/전주.jpg");
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    align-items:flex-end;
+  }
+  .hero-inner{
+    max-width:760px;
+    margin:0 auto;
+    padding:0 24px 40px;
+    width:100%;
+  }
+  .eyebrow{
+    font-size:12.5px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--accent);
+    font-weight:700;
+    margin-bottom:10px;
+  }
+  h1{
+    font-size:clamp(26px,4.5vw,38px);
+    line-height:1.28;
+    margin:0 0 12px;
+    text-wrap:balance;
+    letter-spacing:-0.01em;
+    color:var(--ink);
+  }
+  .hero h1{
+    color:#ffffff;
+    text-shadow:0 2px 12px rgba(0,0,0,.3);
+  }
+  .sub{
+    color:var(--ink-soft);
+    font-size:15.5px;
+    max-width:60ch;
+  }
+  .hero .sub{
+    color:#f0f3f7;
+    text-shadow:0 1px 8px rgba(0,0,0,.2);
+  }
+
+  .wrap{
+    max-width:760px;
+    margin:0 auto;
+    padding:44px 24px 80px;
+    position:relative;
+  }
+
+  section{ margin-bottom:40px; }
+  h2{
+    font-size:19px;
+    margin:0 0 16px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    color:var(--ink);
+  }
+  h2 .tag{
+    font-size:11px;
+    background:var(--accent-soft);
+    color:var(--accent);
+    padding:3px 8px;
+    border-radius:20px;
+    font-weight:700;
+    letter-spacing:0.02em;
+  }
+
+  .day-head{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    gap:12px;
+    margin-bottom:18px;
+  }
+  .day-head .d-title{ font-size:19px; font-weight:700; margin:0; color:var(--ink); }
+  .day-head .d-date{ font-size:13px; color:var(--ink-soft); }
+
+  .timeline{
+    position:relative;
+    padding-left:26px;
+    border-left:2px solid var(--line);
+  }
+  .stop{
+    position:relative;
+    padding-bottom:26px;
+  }
+  .stop:last-child{ padding-bottom:0; }
+  .stop::before{
+    content:"→";
+    position:absolute;
+    left:-30px;
+    top:2px;
+    font-size:14px;
+    font-weight:700;
+    color:var(--accent);
+  }
+  .stop.day2::before{ color:var(--accent2); }
+  .stop .time{
+    font-size:12.5px;
+    font-weight:700;
+    color:var(--accent);
+    font-variant-numeric: tabular-nums;
+    letter-spacing:0.02em;
+  }
+  .stop.day2 .time{ color:var(--accent2); }
+  .stop .place{
+    font-size:16px;
+    font-weight:700;
+    margin:3px 0 4px;
+    color:var(--ink);
+  }
+  .stop .desc{
+    font-size:13.5px;
+    color:var(--ink-soft);
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">여행 일정</div>
+    <h1>전주 1박 2일</h1>
+    <p class="sub"></p>
+  </div>
+</div>
+
+<div class="wrap">
+  <section>
+    <div class="day-head">
+      <h2 class="d-title">Day 1</h2>
+      <span class="d-date"></span>
+    </div>
+    <div class="timeline">
+      <div class="stop">
+        <div class="time">08:00</div>
+        <div class="place">서울 출발</div>
+        <div class="desc">경부고속도로 경유, 자가용 이용</div>
+      </div>
+      <div class="stop">
+        <div class="time">10:00</div>
+        <div class="place">전주 도착</div>
+        <div class="desc">서울에서 자동차로 약 200km, 2시간 소요</div>
+      </div>
+      <div class="stop">
+        <div class="place">전주 한옥마을 관광</div>
+        <div class="desc">🏮 한국 전통 한옥 거리, 감성 사진촬영 명소<br><small style="color: var(--accent);">📍 전라북도 전주시 완산구 태조로 49 | 자유 관광</small></div>
+      </div>
+      <div class="stop">
+        <div class="place">점심 식사</div>
+        <div class="desc">전주 먹거리 골목 또는 한옥마을 주변 음식점</div>
+      </div>
+      <div class="stop">
+        <div class="place">경기전 & 오목대 관광</div>
+        <div class="desc">⭐ 전주의 대표 관광지, 전주 역사 문화 체험<br><small style="color: var(--accent);">📍 경기전: 전라북도 전주시 완산구 풍남로 53 | 오목대: 전라북도 전주시 덕진구 오목대로 147</small></div>
+      </div>
+      <div class="stop">
+        <div class="place">호텔 체크인</div>
+        <div class="desc">전주 시내 숙소 (추천: 전주 한옥마을 근처)</div>
+      </div>
+      <div class="stop">
+        <div class="time">18:00</div>
+        <div class="place"><a href="https://map.naver.com/v5/search/%EC%A7%84%EB%AF%B8%EC%A7%91%EB%B3%B8%EC%A0%90" target="_blank" style="color: #FF69B4; font-weight: 600; font-size: 19px; font-family: 'Comic Sans MS', 'Trebuchet MS', 'Century Gothic', cursive; letter-spacing: 0.8px; text-decoration: none; cursor: pointer; border-bottom: 3px solid #FFB6D9; border-radius: 3px;">진미집본점</a> - 저녁 식사</div>
+        <div class="desc">⭐ 전주 대표 전통 음식점, 진미국수 & 비빔밥<br><small style="color: var(--accent);">📍 전라북도 전주시 완산구 | 영업시간: 10:30-21:00 | 평점: 4.5/5</small></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="day-head">
+      <h2 class="d-title">Day 2</h2>
+      <span class="d-date"></span>
+    </div>
+    <div class="timeline">
+      <div class="stop day2">
+        <div class="time">08:00</div>
+        <div class="place">기상</div>
+        <div class="desc">숙면 후 일어나기</div>
+      </div>
+      <div class="stop day2">
+        <div class="place">아침식사 & 호텔 체크아웃</div>
+        <div class="desc">짐 정리 후 출발 준비</div>
+      </div>
+      <div class="stop day2">
+        <div class="place">전주 남부시장 또는 먹거리골목</div>
+        <div class="desc">🍜 전주 로컬 음식 체험, 쇠고기국밥, 콩나물국밥 등<br><small style="color: var(--accent);">📍 전라북도 전주시 완산구 | 영업시간: 10:00~</small></div>
+      </div>
+      <div class="stop day2">
+        <div class="time">11:00</div>
+        <div class="place">서울 귀경 드라이브 출발</div>
+        <div class="desc">전주에서 서울로 자동차 이동 (약 2시간)</div>
+      </div>
+      <div class="stop day2">
+        <div class="time">13:00</div>
+        <div class="place">서울 도착</div>
+        <div class="desc">전주 1박 2일 여행 완료! 🎉</div>
+      </div>
+    </div>
+  </section>
+</div>
+
+</body>
+</html>
